@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import useDocTitle from "../config/customHooks";
 import {useQuery, gql} from "@apollo/client";
 import AuthorCard from "../components/AuthorCard";
@@ -14,7 +15,11 @@ const Authors = () => {
       }
     }
   `;
-  const {data, loading, error} = useQuery(GET_AUTHORS);
+  const {data, loading, error, refetch} = useQuery(GET_AUTHORS);
+
+  useEffect(() => {
+    if (data) refetch();
+  }, []);
 
   if (loading) return <Loading />;
   if (error) return <h1>Something went wrong....</h1>;

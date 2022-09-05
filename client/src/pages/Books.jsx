@@ -2,6 +2,7 @@ import useDocTitle from "../config/customHooks";
 import {useQuery, gql} from "@apollo/client";
 import BookCard from "../components/BookCard";
 import Loading from "../components/Loading";
+import {useEffect} from "react";
 
 const Books = () => {
   useDocTitle("Book QL | Books");
@@ -19,7 +20,11 @@ const Books = () => {
     }
   `;
 
-  const {data, loading, error} = useQuery(GET_BOOKS);
+  const {data, loading, error, refetch} = useQuery(GET_BOOKS);
+
+  useEffect(() => {
+    if (data) refetch();
+  }, []);
 
   if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;

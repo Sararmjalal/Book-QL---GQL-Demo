@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import {useQuery, gql} from "@apollo/client";
 import {useParams} from "react-router-dom";
 import AuthorCard from "../components/AuthorCard";
@@ -23,6 +24,14 @@ const Author = () => {
       id: params.id,
     },
   });
+
+  useEffect(() => {
+    if (data) {
+      refetch();
+      document.title = `Book QL | ${data.getAuthor.name}`;
+    }
+  }, [loading]);
+
   if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;
   const author = data.getAuthor;

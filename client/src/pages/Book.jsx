@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import {useQuery, gql} from "@apollo/client";
 import {useParams} from "react-router-dom";
 import BookCard from "../components/BookCard";
@@ -22,6 +23,15 @@ const Book = () => {
       id: params.id,
     },
   });
+
+  useEffect(() => {
+    if (data) {
+      refetch();
+      document.title = `Book QL | ${
+        data.getBook.title === "" ? "-No Title!-" : data.getBook.title
+      }`;
+    }
+  }, [loading]);
 
   if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;
