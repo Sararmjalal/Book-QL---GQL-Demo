@@ -20,17 +20,17 @@ const CreateAuthor = () => {
   const [createAuthor] = useMutation(CREATE_AUTHOR);
 
   const create = async () => {
+    if (!authorName) setErrorMessage("Field can not be empty!");
     const x = await createAuthor({
       variables: {
         name: authorName,
       },
     });
     setAuthorName("");
-    if (!authorName) setErrorMessage("Field can not be empty!");
-    if (x.data.createAuthor.status === 200)
-      setSuccessMessage("Author created successfully!");
-    console.log(x);
-    if (successMessage == "Author created successfully!") navigate("/authors");
+    if (x.data.createAuthor.status === 200) navigate("/authors");
+    //   setSuccessMessage("Author created successfully!");
+    // console.log(x);
+    // if (successMessage == "Author created successfully!") navigate("/authors");
   };
 
   return (
@@ -62,6 +62,6 @@ const CreateAuthor = () => {
       </div>
     </div>
   );
-};
+};;
 
 export default CreateAuthor;

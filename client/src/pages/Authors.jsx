@@ -4,17 +4,18 @@ import {useQuery, gql} from "@apollo/client";
 import AuthorCard from "../components/AuthorCard";
 import Loading from "../components/Loading";
 
+export const GET_AUTHORS = gql`
+  query GetAuthors {
+    getAuthors {
+      _id
+      name
+      createdAt
+    }
+  }
+`;
+
 const Authors = () => {
   useDocTitle("Book QL | Authors");
-  const GET_AUTHORS = gql`
-    query GetAuthors {
-      getAuthors {
-        _id
-        name
-        createdAt
-      }
-    }
-  `;
   const {data, loading, error, refetch} = useQuery(GET_AUTHORS);
 
   useEffect(() => {

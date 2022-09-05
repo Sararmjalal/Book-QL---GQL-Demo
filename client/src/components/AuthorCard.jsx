@@ -22,15 +22,19 @@ const AuthorCard = ({author, id}) => {
             <p className='font-bold text-blue-900'>
               Books written by {author.name}:
             </p>
-            {author.books.map((book) => {
-              return (
-                <ul>
-                  <li className='hover:text-blue-600 transition-all'>
-                    <Link to={`/books/${book._id}`}>{book.title}</Link>
-                  </li>
-                </ul>
-              );
-            })}
+            {author.books.length ? (
+              author.books.map((book) => {
+                return (
+                  <ul>
+                    <li className='hover:text-blue-600 transition-all'>
+                      <Link to={`/books/${book._id}`}>{book.title}</Link>
+                    </li>
+                  </ul>
+                );
+              })
+            ) : (
+              <p className='text-red-800'>{author.name} has no books yet!</p>
+            )}
           </>
         )}
         {location.pathname !== "/authors" ? (
