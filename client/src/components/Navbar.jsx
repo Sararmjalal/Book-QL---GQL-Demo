@@ -1,4 +1,4 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -44,6 +44,22 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
+      <div className='flex gap-2'>
+        <div className='rounded-md shadow'>
+          <Link
+            to={"/createbook"}
+            className='p-1 w-full flex items-center justify-center border border-transparent text-sm leading-6 font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-900 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out '>
+            Create new book!
+          </Link>
+        </div>
+        <div className='mt-3 sm:mt-0 sm:ml-3'>
+          <Link
+            to={"/createauthor"}
+            className='p-1 w-full flex items-center justify-center border border-transparent text-sm leading-6 font-regular rounded-md text-indigo-700 bg-indigo-200 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out '>
+            Create new author!
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 };

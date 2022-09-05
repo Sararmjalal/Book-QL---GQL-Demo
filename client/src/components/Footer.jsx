@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className='p-4 mt-auto rounded-lg shadow md:px-6 md:py-8 bg-gray-900'>
+    <footer className='w-full p-4 rounded-lg shadow md:px-6 md:py-8 bg-gray-900'>
       <div className='sm:flex sm:items-center sm:justify-between'>
         <img
           src={"/assets/images/logo.png"}

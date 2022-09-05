@@ -31,7 +31,7 @@ const Book = () => {
         data.getBook.title === "" ? "-No Title!-" : data.getBook.title
       }`;
     }
-  }, [loading]);
+  }, []);
 
   if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;
