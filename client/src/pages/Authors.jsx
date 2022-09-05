@@ -18,13 +18,13 @@ const Authors = () => {
   if (loading) return <h1>Loading....</h1>;
   if (error) return <h1>Something went wrong....</h1>;
   const authors = data.getAuthors;
-  console.log(authors);
+  // console.log(authors);
   return (
     <>
       {authors.length == 0 ? (
         "There are no authors yet!"
       ) : (
-        <div className='p-20 flex flex-wrap justify-center cursor-pointer'>
+        <div className='p-20 flex flex-wrap justify-center'>
           {authors.map((author) => {
             return <AuthorCard author={author} id={author._id} />;
           })}
