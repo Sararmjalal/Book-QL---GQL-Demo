@@ -1,6 +1,7 @@
 import useDocTitle from "../config/customHooks";
 import {useQuery, gql} from "@apollo/client";
 import AuthorCard from "../components/AuthorCard";
+import Loading from "../components/Loading";
 
 const Authors = () => {
   useDocTitle("Book QL | Authors");
@@ -15,7 +16,7 @@ const Authors = () => {
   `;
   const {data, loading, error} = useQuery(GET_AUTHORS);
 
-  if (loading) return <h1>Loading....</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Something went wrong....</h1>;
   const authors = data.getAuthors;
   // console.log(authors);

@@ -1,6 +1,7 @@
 import {useQuery, gql} from "@apollo/client";
 import {useParams} from "react-router-dom";
 import AuthorCard from "../components/AuthorCard";
+import Loading from "../components/Loading";
 
 const Author = () => {
   const params = useParams();
@@ -22,12 +23,12 @@ const Author = () => {
       id: params.id,
     },
   });
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;
   const author = data.getAuthor;
   // console.log(author);
   return (
-    <div>
+    <div className='p-20 flex flex-wrap justify-center'>
       <AuthorCard author={author} />
     </div>
   );

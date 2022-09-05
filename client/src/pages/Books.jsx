@@ -1,6 +1,7 @@
 import useDocTitle from "../config/customHooks";
 import {useQuery, gql} from "@apollo/client";
 import BookCard from "../components/BookCard";
+import Loading from "../components/Loading";
 
 const Books = () => {
   useDocTitle("Book QL | Books");
@@ -11,6 +12,7 @@ const Books = () => {
         title
         author {
           name
+          _id
         }
         createdAt
       }
@@ -19,7 +21,7 @@ const Books = () => {
 
   const {data, loading, error} = useQuery(GET_BOOKS);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;
   const books = data.getBooks;
   // console.log(books);

@@ -12,7 +12,12 @@ const BookCard = ({book, id}) => {
           {book.title === "" ? "-No Title!-" : book.title}
         </h5>
         <h6 className='mb-2 text-xl font-light tracking-tight text-gray-900'>
-          Written by {book.author.name}
+          Written by
+          <Link
+            to={`/authors/${book.author._id}`}
+            className='hover:text-blue-600 transition-all'>
+            {book.author.name}
+          </Link>
         </h6>
         <p className='mb-3 font-normal text-gray-700'>
           Written at {book.createdAt.slice(0, 4)}/{book.createdAt.slice(5, 7)}/

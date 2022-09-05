@@ -15,19 +15,24 @@ const AuthorCard = ({author, id}) => {
           Created at {author.createdAt.slice(0, 4)}/
           {author.createdAt.slice(5, 7)}/{author.createdAt.slice(8, 10)}
         </p>
-        <p>
-          {!author.books
-            ? ""
-            : author.books.map((book) => {
-                return (
-                  <ul>
-                    <li>
-                      <Link to={`/books/${book._id}`}>{book.title}</Link>
-                    </li>
-                  </ul>
-                );
-              })}
-        </p>
+        {!author.books ? (
+          ""
+        ) : (
+          <>
+            <p className='font-bold text-blue-900'>
+              Books written by {author.name}:
+            </p>
+            {author.books.map((book) => {
+              return (
+                <ul>
+                  <li className='hover:text-blue-600 transition-all'>
+                    <Link to={`/books/${book._id}`}>{book.title}</Link>
+                  </li>
+                </ul>
+              );
+            })}
+          </>
+        )}
         {location.pathname !== "/authors" ? (
           ""
         ) : (
