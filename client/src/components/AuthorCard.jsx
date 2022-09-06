@@ -15,6 +15,7 @@ const AuthorCard = ({author, id}) => {
           Created at {author.createdAt.slice(0, 4)}/
           {author.createdAt.slice(5, 7)}/{author.createdAt.slice(8, 10)}
         </p>
+        <p className='mb-3 font-light text-xs text-gray-700'>{`Author ID: ${author._id}`}</p>
         {!author.books ? (
           ""
         ) : (

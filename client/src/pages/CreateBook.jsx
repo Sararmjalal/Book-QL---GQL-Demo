@@ -31,7 +31,7 @@ const CreateBook = () => {
     const findID = data.getAuthors.find(
       (author) => author._id === book.authorId
     );
-    if (!findID) setErrorMessage("Author with this ID does not exist!");
+    if (!findID) return setErrorMessage("Author with this ID does not exist!");
     const x = await createBook({
       variables: {
         title: book.title,
@@ -40,7 +40,7 @@ const CreateBook = () => {
     });
     console.log(x);
     setBook({...book, title: "", authorId: ""});
-    if (!book.title) setErrorMessage("Field can not be empty!");
+    if (!book.title) return setErrorMessage("Field can not be empty!");
     if (x.data.createBook.status === 200) navigate("/books");
   };
 

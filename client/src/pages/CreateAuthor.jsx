@@ -20,15 +20,16 @@ const CreateAuthor = () => {
   const [createAuthor] = useMutation(CREATE_AUTHOR);
 
   const create = async () => {
-    if (!authorName) setErrorMessage("Field can not be empty!");
+    if (!authorName) return setErrorMessage("Field can not be empty!");
     const x = await createAuthor({
       variables: {
         name: authorName,
       },
     });
     setAuthorName("");
-    if (x.data.createAuthor.status === 200) navigate("/authors");
-    //   setSuccessMessage("Author created successfully!");
+    if (x.data.createAuthor.status === 200)
+      setSuccessMessage("Author created successfully!");
+    // if (x.data.createAuthor.status === 200) navigate("/authors");
     // console.log(x);
     // if (successMessage == "Author created successfully!") navigate("/authors");
   };
@@ -43,7 +44,7 @@ const CreateAuthor = () => {
           type='text'
           id='authorName'
           value={authorName}
-          onChange={(e) => setAuthorName(e.target.value)}
+          onChange={(e) => setAuthorName(e.target.value.trimStart())}
           required
         />
         <p
