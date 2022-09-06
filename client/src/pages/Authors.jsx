@@ -33,7 +33,7 @@ const Authors = () => {
       ) : (
         <div className='p-20 flex flex-wrap justify-center'>
           {authors.map((author) => {
-            return <AuthorCard author={author} id={author._id} />;
+            return <AuthorCard author={author} id={author._id} refetch={refetch} />;
           })}
         </div>
       )}

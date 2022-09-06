@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {useMutation, gql} from "@apollo/client";
 
-const AuthorCard = ({author, id}) => {
+const AuthorCard = ({author, id, refetch}) => {
   const [editMode, setEditMode] = useState(false);
   const [authorName, setAuthorName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -35,6 +35,7 @@ const AuthorCard = ({author, id}) => {
     handleEdit();
     if (x.data.editAuthor.msg === "ok") {
       setSuccessMessage("Author edited successfully!");
+      refetch()
     }
   };
 
